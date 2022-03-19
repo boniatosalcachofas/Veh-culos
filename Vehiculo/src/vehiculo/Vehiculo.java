@@ -2,6 +2,8 @@ package vehiculo;
 
 public class Vehiculo {
 	
+	private static String tipoVehiculo[] = {"Coche", "Furgoneta", "Moto"};
+	
 	private String matrícula;
 	private String marca;
 	private String modelo;
@@ -11,7 +13,11 @@ public class Vehiculo {
 	
 	
 	
-	
+	public void vehiculoYaAlquilado(int empresa) {
+		
+		this.empresa = empresa;
+		
+	}
 	
 	
 	
@@ -48,6 +54,14 @@ public class Vehiculo {
 	}
 	public void setCaballos(int caballos) {
 		this.caballos = caballos;
+	}
+
+	public static String[] getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public static void setTipoVehiculo(String[] tipoVehiculo) {
+		Vehiculo.tipoVehiculo = tipoVehiculo;
 	}
 	
 	

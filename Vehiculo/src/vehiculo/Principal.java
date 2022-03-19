@@ -1,6 +1,7 @@
 package vehiculo;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Principal {
 	
@@ -8,6 +9,9 @@ public class Principal {
 	public static Coche coches[] = new Coche[7];
 	public static Furgoneta furgonetas[] = new Furgoneta[3];
 	public static Moto motos[] = new Moto[2];
+	
+	public static ArrayList <Vehiculo> vehiculosAlquilados = new ArrayList();
+	public static ArrayList <Vehiculo> vehiculosNoAlquilados = new ArrayList();
 	
 	public static Empresa empresas[] = new Empresa[6];
 	
@@ -32,11 +36,27 @@ public static void main(String[] args) {
 		
 		
 		empresas[0] = new Empresa("Renault", "04936");
-		empresas[1] = new Empresa("Nescafé", "56343");
+		empresas[1] = new Empresa("Nescafe", "56343");
 		empresas[2] = new Empresa("Salarium", "12423");
 		empresas[3] = new Empresa("Yummi", "54236");
 		empresas[4] = new Empresa("Enclurt", "85438");
 		empresas[5] = new Empresa("Deuchnest", "39332");
+		
+		for (int i = 0; i < coches.length; i++) {
+
+			vehiculosNoAlquilados.add(coches[i]);
+
+		}
+		for (int i = 0; i < furgonetas.length; i++) {
+
+			vehiculosNoAlquilados.add(furgonetas[i]);
+
+		}
+		for (int i = 0; i < motos.length; i++) {
+
+			vehiculosNoAlquilados.add(motos[i]);
+
+		}
 		
 		menuAlquiler();
 	}
@@ -54,19 +74,50 @@ public static void main(String[] args) {
 		
 		System.out.println("¿Que vehiculo?");
 		//Posible error
+		int vehiculo = scInt.nextInt();
+		System.out.println(Vehiculo.getTipoVehiculo()[vehiculo-1]);
+		
+		System.out.println("¿Durante cuantos dias?");
+		//Posible error
+		int diasAlquilado = scInt.nextInt();
+		System.out.println("Durante " + diasAlquilado + " dias");
 		
 		
-
-		
-		//for(int i = 0; i<empresas.length; i++) {
-//			
-//			if(i == eleccion)
-//			
-//		}
 	
 	}
 	
-	
+	public static void alquilerVehiculos(int tipoVehiculo, int numEmpresa) {
+		
+		
+		for(int i = 0; i<vehiculosNoAlquilados.size(); i++) {
+			
+			if(tipoVehiculo == 1 && vehiculosNoAlquilados.get(i) instanceof Coche) {
+				
+				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
+				vehiculosNoAlquilados.remove(i);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				break;
+				
+			}else if(tipoVehiculo == 2 && vehiculosNoAlquilados.get(i) instanceof Furgoneta) {
+				
+				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
+				vehiculosNoAlquilados.remove(i);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				break;
+				
+			}else if(tipoVehiculo == 3 && vehiculosNoAlquilados.get(i) instanceof Moto) {
+				
+				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
+				vehiculosNoAlquilados.remove(i);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				break;
+				
+			}
+			
+		}
+		
+		
+	}
 	
 
 }

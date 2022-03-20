@@ -58,18 +58,43 @@ public static void main(String[] args) {
 
 		}
 		
-		menuAlquiler();
+		menuPrincipal();
+	}
+
+	public static void menuPrincipal() {
+		while (true) {
+			Scanner scInt = new Scanner(System.in);
+
+			System.out.println("DIA " + dia + "\n------" + "\nQue empresa desea alquilar un vehiculo?");
+
+			int numEmpresa = scInt.nextInt();
+
+			if (numEmpresa > 0) {
+				menuAlquiler(numEmpresa);
+			} else {
+
+				switch (numEmpresa) {
+
+				case -1:
+					vehiculoSinAlquilar();
+					vehiculoAlquilado();
+					pasoDia();
+					break;
+
+				case -2:
+					vehiculoSinAlquilar();
+					break;
+
+				}
+			}
+		}
+
 	}
 	
-	public static void menuAlquiler() {
+	public static void menuAlquiler(int numEmpresa) {
 	Scanner scInt = new Scanner(System.in);
 		
-		
-		System.out.println("DIA " + dia + 
-							"\n------"
-						+ "\nQue empresa desea alquilar un vehiculo?");
-		//Posible error
-		int numEmpresa = scInt.nextInt();	
+			
 		System.out.println(empresas[numEmpresa-1].getNombre());
 		
 		System.out.println("¿Que vehiculo?");
@@ -82,11 +107,11 @@ public static void main(String[] args) {
 		int diasAlquilado = scInt.nextInt();
 		System.out.println("Durante " + diasAlquilado + " dias");
 		
-		
+		alquilerVehiculos(vehiculo, numEmpresa, diasAlquilado);
 	
 	}
-	
-	public static void alquilerVehiculos(int tipoVehiculo, int numEmpresa) {
+	//Alquila un vehiculo a una empresa
+	public static void alquilerVehiculos(int tipoVehiculo, int numEmpresa, int diasAlquilado) {
 		
 		
 		for(int i = 0; i<vehiculosNoAlquilados.size(); i++) {
@@ -95,22 +120,88 @@ public static void main(String[] args) {
 				
 				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
 				vehiculosNoAlquilados.remove(i);
-				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa, diasAlquilado);
 				break;
 				
 			}else if(tipoVehiculo == 2 && vehiculosNoAlquilados.get(i) instanceof Furgoneta) {
 				
 				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
 				vehiculosNoAlquilados.remove(i);
-				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa, diasAlquilado);
 				break;
 				
 			}else if(tipoVehiculo == 3 && vehiculosNoAlquilados.get(i) instanceof Moto) {
 				
 				vehiculosAlquilados.add(vehiculosNoAlquilados.get(i));
 				vehiculosNoAlquilados.remove(i);
-				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa);
+				vehiculosAlquilados.get(i).vehiculoYaAlquilado(numEmpresa, diasAlquilado);
 				break;
+				
+			}
+			
+		}
+		
+		
+	}
+	//Muestra todos los vehiculos que no estan alquilados
+	public static void vehiculoSinAlquilar() {
+		
+		
+		for(int i = 0; i<vehiculosNoAlquilados.size(); i++) {
+			
+			if(vehiculosNoAlquilados.get(i) instanceof Coche) {
+				
+				System.out.println("Coche " + vehiculosNoAlquilados.get(i).mostrarDatosNoAlquilados());
+				
+			}else if(vehiculosNoAlquilados.get(i) instanceof Furgoneta) {
+				
+				System.out.println("Furgoneta " + vehiculosNoAlquilados.get(i).mostrarDatosNoAlquilados());
+				
+			}else if(vehiculosNoAlquilados.get(i) instanceof Moto) {
+				
+				System.out.println("Moto " + vehiculosNoAlquilados.get(i).mostrarDatosNoAlquilados());
+				
+			}
+			
+		}
+		
+	}
+	//Muestra los vehiculos que estan alquilados
+	public static void vehiculoAlquilado() {
+		
+for(int i = 0; i<vehiculosAlquilados.size(); i++) {
+			
+			if(vehiculosAlquilados.get(i) instanceof Coche) {
+				
+				System.out.println("Coche " + vehiculosAlquilados.get(i).mostrarDatosAlquilados());
+				
+			}else if(vehiculosAlquilados.get(i) instanceof Furgoneta) {
+				
+				System.out.println("Furgoneta " + vehiculosAlquilados.get(i).mostrarDatosAlquilados());
+				
+			}else if(vehiculosAlquilados.get(i) instanceof Moto) {
+				
+				System.out.println("Moto " + vehiculosAlquilados.get(i).mostrarDatosAlquilados());
+				
+			}
+			
+		}
+		
+	}
+	
+	
+	public static void pasoDia() {
+		
+		dia++;
+		
+		for(int i = 0; i<vehiculosAlquilados.size(); i++) {
+			
+			int diaRestante = vehiculosAlquilados.get(i).pasoDiaVehiculo();
+			
+			if(diaRestante == -1) {
+				
+				vehiculosNoAlquilados.add(vehiculosAlquilados.get(i));
+				vehiculosAlquilados.remove(i);
 				
 			}
 			

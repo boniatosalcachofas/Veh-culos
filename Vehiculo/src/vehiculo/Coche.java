@@ -11,8 +11,8 @@ public class Coche extends Vehiculo {
 	
 	//Constructores
 	
-	public Coche(String matrícula, String marca, String modelo, int caballos, int numPuertas) {
-		super(matrícula, marca, modelo, caballos);
+	public Coche(String matricula, String marca, String modelo, int caballos, int numPuertas) {
+		super(matricula, marca, modelo, caballos);
 		this.numPuertas = numPuertas;
 	}
 

@@ -8,8 +8,8 @@ public class Furgoneta extends Vehiculo{
 	
 	//constructores
 	
-	public Furgoneta(String matrícula, String marca, String modelo, int caballos, double espacioInterior) {
-		super(matrícula, marca, modelo, caballos);
+	public Furgoneta(String matricula, String marca, String modelo, int caballos, double espacioInterior) {
+		super(matricula, marca, modelo, caballos);
 		this.espacioInterior = espacioInterior;
 	}
 

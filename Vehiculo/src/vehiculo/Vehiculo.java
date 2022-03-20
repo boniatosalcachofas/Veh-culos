@@ -4,27 +4,46 @@ public class Vehiculo {
 	
 	private static String tipoVehiculo[] = {"Coche", "Furgoneta", "Moto"};
 	
-	private String matrícula;
+	private String matricula;
 	private String marca;
 	private String modelo;
 	private int caballos;
 	private int empresa;
+	private int diasRestantes;
 	
 	
 	
 	
-	public void vehiculoYaAlquilado(int empresa) {
+	public void vehiculoYaAlquilado(int empresa, int diasRestantes) {
 		
 		this.empresa = empresa;
+		this.diasRestantes = diasRestantes;
+		
+	}
+	
+	public String mostrarDatosNoAlquilados() {
+		
+		return " " + marca + " " + modelo + " " + matricula + "\n---";
+		
+	}
+	
+public String mostrarDatosAlquilados() {
+		
+		return " " + marca + " " + modelo + " " + matricula + " Empresa" + diasRestantes + " dias\n---";
+		
+	}
+	
+	public int pasoDiaVehiculo() {
+		
+		this.diasRestantes--;
+		return this.diasRestantes;
 		
 	}
 	
 	
-	
-	
-	public Vehiculo(String matrícula, String marca, String modelo, int caballos) {
+	public Vehiculo(String matricula, String marca, String modelo, int caballos) {
 		super();
-		this.matrícula = matrícula;
+		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.caballos = caballos;
@@ -32,10 +51,10 @@ public class Vehiculo {
 	//Getters and setters
 	
 	public String getMatrícula() {
-		return matrícula;
+		return matricula;
 	}
-	public void setMatrícula(String matrícula) {
-		this.matrícula = matrícula;
+	public void setMatrícula(String matricula) {
+		this.matricula = matricula;
 	}
 	public String getMarca() {
 		return marca;
@@ -62,6 +81,30 @@ public class Vehiculo {
 
 	public static void setTipoVehiculo(String[] tipoVehiculo) {
 		Vehiculo.tipoVehiculo = tipoVehiculo;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public int getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(int empresa) {
+		this.empresa = empresa;
+	}
+
+	public int getDiasRestantes() {
+		return diasRestantes;
+	}
+
+	public void setDiasRestantes(int diasRestantes) {
+		this.diasRestantes = diasRestantes;
 	}
 	
 	

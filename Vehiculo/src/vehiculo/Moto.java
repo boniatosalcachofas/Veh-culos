@@ -9,8 +9,8 @@ public class Moto extends Vehiculo{
 	
 	//Constructores
 	
-	public Moto(String matrícula, String marca, String modelo, int caballos, boolean maletin) {
-		super(matrícula, marca, modelo, caballos);
+	public Moto(String matricula, String marca, String modelo, int caballos, boolean maletin) {
+		super(matricula, marca, modelo, caballos);
 		this.maletin = maletin;
 	}
 

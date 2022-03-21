@@ -81,7 +81,6 @@ public class Principal {
 	
 	/**
 	 * Metodo para definir si lo que quieres es alquilar un vehiculo o pasar de dia y mostrar un informe
-	 * @param numEmpresa adquiere, mediante el scanner, el numero de la empresa
 	 * @see menuAlquiler llama al menu para alquilar vehiculos con el numero de la empresa obtenido en este metodo
 	 * @see mostrarNoAlquilado
 	 * @see mostrarAlquilado
@@ -112,7 +111,7 @@ public class Principal {
 
 			case -2:
 				mostrarNoAlquilado();
-				vehiculoAlquiladoOrden();
+				mostrarAlquiladoOrden();
 				pasoDia();
 				break;
 
@@ -123,9 +122,7 @@ public class Principal {
 
 	/**
 	 * Metodo para obtener la informacion sobre el tipo de vehiculo que se alquila y el numero de dias
-	 * @param numEmpresa
-	 * @param vehiculo obtiene un numero que define el tipo de vehiculo
-	 * @param diasAlquilado obtiene el numero de dias que se alquila el vehiculo
+	 * @param numEmpresa adquiere, mediante el scanner, el numero de la empresa
 	 * @see alquilerDeVehiculos llama al metodo enviando la informacion para dar de alta el alquiler y seleccionar el vehiculo
 	 * @throws java.lang.ArrayIndexOutOfBoundsException se obtiene al elegir un caracter numerico que sea mayor al limite del tamanyo de los arrays de este metodo
 	 * @throws java.util.InputMismatchException se obtiene al escribir un caracter no numerico en un campo numerica
@@ -203,7 +200,7 @@ public class Principal {
 	 * @param numEmpresa
 	 * @param diasAlquilado
 	 * @param i
-	 * @see Vehiculo.altaAlquiler metodo para dar de alta el alquiler de determinado vehiculo enviando la informacion necesaria
+	 * {@link vehiculo.Vehiculo#altaAlquiler(numEmpresa, diasAlquilado)} metodo para dar de alta el alquiler de determinado vehiculo enviando la informacion necesaria
 	 * para rellenar los datos
 	 */
 	public static void procesoDeAlquiler(int numEmpresa, int diasAlquilado, int i) {
@@ -231,7 +228,7 @@ public class Principal {
 	 */
 	public static void mostrarNoAlquilado() {
 
-		System.out.println("VEHICULOS SIN ALQUILAR");
+		System.out.println("VEHICULOS NO ALQUILADOS");
 		for (int i = 0; i < vehiculosNoAlquilados.size(); i++) {
 
 			if (vehiculosNoAlquilados.get(i) instanceof Coche) {
@@ -283,11 +280,10 @@ public class Principal {
 	 * metodo que muestra un listado de vehiculos que estan alquilados
 	 * distinguiendo entre tipo de vehiculo mediante "if" y ordenandolos
 	 * de menos a mas sobre la caducidad o dias restantes del alquiler
-	 * @param vehiculosAlquiladosTemporal array en el que se clona el array de vehiculosAlquilados
 	 * para poder ordenar mediante varios if, un for y un while
-	 * @see Vehiculo.datosVehiculos metodo para mostrar informacion sobre los vehiculos
+	 * {@link vehiculo.Vehiculo#datosVehiculos()} metodo para mostrar informacion sobre los vehiculos
 	 */
-	public static void vehiculoAlquiladoOrden() {
+	public static void mostrarAlquiladoOrden() {
 
 		ArrayList<Vehiculo> vehiculosAlquiladosTemporal = new ArrayList();
 
@@ -328,7 +324,7 @@ public class Principal {
 	}
 	/**
 	 * metodo para pasar de dia
-	 * @see Vehiculo.pasoDiaVehiculo se llama al metodo para obtener el numero de dias restantes para finalizar el alquiler
+	 * {@link vehiculo.Vehiculo#pasoDiaVehiculo()} se llama al metodo para obtener el numero de dias restantes para finalizar el alquiler
 	 */
 	public static void pasoDia() {
 

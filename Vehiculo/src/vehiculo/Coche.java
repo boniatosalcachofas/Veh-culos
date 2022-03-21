@@ -1,5 +1,10 @@
 package vehiculo;
 
+/**
+ * 
+ * @author isma
+ * @version 0.06
+ */
 public class Coche extends Vehiculo {
 
 	private int numPuertas;

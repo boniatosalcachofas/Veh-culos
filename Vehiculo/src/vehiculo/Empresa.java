@@ -2,6 +2,11 @@ package vehiculo;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author isma
+ * @version 0.06
+ */
 public class Empresa {
 
 	private String nombre;

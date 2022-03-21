@@ -1,5 +1,10 @@
 package vehiculo;
 
+/**
+ * 
+ * @author isma
+ * @version 0.06
+ */
 public class Moto extends Vehiculo {
 
 	boolean maletin;
@@ -12,11 +17,17 @@ public class Moto extends Vehiculo {
 	}
 
 	// Getters and setters
-
+	/**
+	 * 
+	 * @return devuelve informacion sobre si la moto tiene maletin o no
+	 */
 	public boolean isMaletin() {
 		return maletin;
 	}
-
+	/**
+	 * define si la moto tiene maletin o no
+	 * @param maletin
+	 */
 	public void setMaletin(boolean maletin) {
 		this.maletin = maletin;
 	}

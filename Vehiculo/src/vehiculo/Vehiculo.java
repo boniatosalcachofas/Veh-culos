@@ -1,46 +1,41 @@
 package vehiculo;
 
 public class Vehiculo {
-	
-	private static String tipoVehiculo[] = {"Coche", "Furgoneta", "Moto"};
-	
+
+	private static String tipoVehiculo[] = { "Coche", "Furgoneta", "Moto" };
+
 	private String matricula;
 	private String marca;
 	private String modelo;
 	private int caballos;
 	private int empresa;
 	private int diasRestantes;
-	
-	
-	
-	
-	public void vehiculoYaAlquilado(int empresa, int diasRestantes) {
-		
+
+	public void altaAlquiler(int empresa, int diasRestantes) {
+
 		this.empresa = empresa;
 		this.diasRestantes = diasRestantes;
-		
+
 	}
-	
-	public String mostrarDatosNoAlquilados() {
-		
-		return " " + marca + " " + modelo + " " + matricula + "\n---";
-		
+
+	public String datosVehiculos() {
+
+		if (diasRestantes == -1)
+			return " " + marca + " " + modelo + " " + matricula + "\n---";
+
+		else
+			return " " + marca + " " + modelo + " " + matricula + " Empresa" + diasRestantes + " dias\n---";
+
 	}
-	
-public String mostrarDatosAlquilados() {
-		
-		return " " + marca + " " + modelo + " " + matricula + " Empresa" + diasRestantes + " dias\n---";
-		
-	}
-	
+
 	public int pasoDiaVehiculo() {
-		
+
 		this.diasRestantes--;
 		return this.diasRestantes;
-		
+
 	}
-	
-	
+
+	// Constructores
 	public Vehiculo(String matricula, String marca, String modelo, int caballos) {
 		super();
 		this.matricula = matricula;
@@ -48,29 +43,36 @@ public String mostrarDatosAlquilados() {
 		this.modelo = modelo;
 		this.caballos = caballos;
 	}
-	//Getters and setters
-	
+	// Getters and setters
+
 	public String getMatrícula() {
 		return matricula;
 	}
+
 	public void setMatrícula(String matricula) {
 		this.matricula = matricula;
 	}
+
 	public String getMarca() {
 		return marca;
 	}
+
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+
 	public String getModelo() {
 		return modelo;
 	}
+
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+
 	public int getCaballos() {
 		return caballos;
 	}
+
 	public void setCaballos(int caballos) {
 		this.caballos = caballos;
 	}
@@ -106,8 +108,5 @@ public String mostrarDatosAlquilados() {
 	public void setDiasRestantes(int diasRestantes) {
 		this.diasRestantes = diasRestantes;
 	}
-	
-	
-	
 
 }
